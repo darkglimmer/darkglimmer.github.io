@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="博客，文章," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="#关于c的一些知识点">
+<meta name="keywords" content="博客，文章">
+<meta property="og:type" content="article">
+<meta property="og:title" content="new-post">
+<meta property="og:url" content="http://yoursite.com/2017/10/12/关于C/index.html">
+<meta property="og:site_name" content="darkglimmer‘s blog">
+<meta property="og:description" content="#关于c的一些知识点">
+<meta property="og:image" content="https://cdn.glitch.com/6fab60b1-32c5-42ee-b5f3-40edd35dc042%2Fc.png?1510035313302">
+<meta property="og:updated_time" content="2017-11-27T10:02:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="new-post">
+<meta name="twitter:description" content="#关于c的一些知识点">
+<meta name="twitter:image" content="https://cdn.glitch.com/6fab60b1-32c5-42ee-b5f3-40edd35dc042%2Fc.png?1510035313302">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/10/12/关于C/"/>
+
+
+
+
+
+  <title>new-post | darkglimmer‘s blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">darkglimmer‘s blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/12/关于C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="baoxinyiu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="darkglimmer‘s blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">new-post</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-12T07:59:23+08:00">
+                2017-10-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#关于c的一些知识点<br><a id="more"></a></p>
+<h3 id="要空格："><a href="#要空格：" class="headerlink" title="要空格："></a>要空格：</h3><p>for中“；”后<br>while后</p>
+<h3 id="不要空格："><a href="#不要空格：" class="headerlink" title="不要空格："></a>不要空格：</h3><p>scanf  %d%d中间</p>
+<h3 id="初始化："><a href="#初始化：" class="headerlink" title="初始化："></a>初始化：</h3><p>a[]={0}所有的都初始值为0；</p>
+<h3 id="等于／判断／输出："><a href="#等于／判断／输出：" class="headerlink" title="等于／判断／输出："></a>等于／判断／输出：</h3><p>!=就是不等于<br>if(a)当“表达式”的值不等于0（即判定为“逻辑真”）时，则执行语句，否则直接转向执行下一条。<br>do while 当满足while（）中条件时循环</p>
+<h3 id="字符串："><a href="#字符串：" class="headerlink" title="字符串："></a>字符串：</h3><p>强制类型转换用char<br>scnaf输入字符串用%s，不用&amp;<br><a href="http://c.biancheng.net/cpp/html/1574.html" target="_blank" rel="external">字符串转化为数字</a></p>
+<h3 id="数组中数字交换位置的时候记住标号就行，不用记住数"><a href="#数组中数字交换位置的时候记住标号就行，不用记住数" class="headerlink" title="数组中数字交换位置的时候记住标号就行，不用记住数"></a>数组中数字交换位置的时候记住标号就行，不用记住数</h3><h3 id="形参实参："><a href="#形参实参：" class="headerlink" title="形参实参："></a><a href="http://c.biancheng.net/cpp/biancheng/view/132.html" target="_blank" rel="external">形参实参</a>：</h3><p>形参出现在函数定义中，在整个函数体内都可以使用，离开该函数则不能使用。实参出现在主调函数中，进入被调函数后，实参变量也不能使用。形参和实参的功能是作数据传送。发生函数调用时，主调函数把实参的值传送给被调函数的形参从而实现主调函数向被调函数的数据传送。<br>1.形参变量只有在被调用时才分配内存单元，在调用结束时，即刻释放所分配的内存单元。因此，形参只有在函数内部有效。函数调用结束返回主调函数后则不能再使用该形参变量。<br>2.实参可以是常量、变量、表达式、函数等，无论实参是何种类型的量，在进行函数调用时，它们都必须具有确定的值， 以便把这些值传送给形参。因此应预先用赋值，输入等办法使实参获得确定值。<br>3.实参和形参在数量上，类型上，顺序上应严格一致，否则会发生“类型不匹配”的错误。<br>4.函数调用中发生的数据传送是单向的。即只能把实参的值传送给形参，而不能把形参的值反向地传送给实参。因此在函数调用过程中，形参的值发生改变，而实参中的值不会变化。<br>5.在定义函数时，必须在函数首部指定形参的类型.</p>
+<h3 id="函数调用改变参数："><a href="#函数调用改变参数：" class="headerlink" title="函数调用改变参数："></a>函数调用改变参数：</h3><p><a href="http://c.biancheng.net/cpp/biancheng/view/132.html" target="_blank" rel="external">swap例子</a><br><a href="http://blog.csdn.net/rston/article/details/50955921" target="_blank" rel="external">传参</a></p>
+<ul>
+<li>用return</li>
+<li>用数组</li>
+<li>改变<a href="http://c.biancheng.net/cpp/html/462.html" target="_blank" rel="external">优先级</a><br><img src="https://cdn.glitch.com/6fab60b1-32c5-42ee-b5f3-40edd35dc042%2Fc.png?1510035313302" style="zoom:40%"><h3 id="自增自减"><a href="#自增自减" class="headerlink" title="自增自减"></a><a href="http://blog.csdn.net/lianghui0811/article/details/48736109" target="_blank" rel="external">自增自减</a></h3><h3 id="题意："><a href="#题意：" class="headerlink" title="题意："></a>题意：</h3>输出其对10000取模的结果——%10000<h3 id="四舍五入："><a href="#四舍五入：" class="headerlink" title="四舍五入："></a>四舍五入：</h3>(int)a+0.5(同样注意负数的情况,把 + 换成 - 即可。)<br>t = (C2 - C1 + 50) / 100<h3 id="逆序："><a href="#逆序：" class="headerlink" title="逆序："></a>逆序：</h3>(j=i;j&gt;=0;j–)//生成的数字是逆序的，所以要逆序输出<pre><code>printf(&quot;%c&quot;,s[j]);
+</code></pre><h3 id="整型数和字符串的相互转换："><a href="#整型数和字符串的相互转换：" class="headerlink" title="整型数和字符串的相互转换："></a><a href="http://c.biancheng.net/cpp/html/792.html" target="_blank" rel="external">整型数和字符串的相互转换</a>：</h3>1.itoa() 将整型值转换为字符串<br>itoa() 将长整型值转换为字符串<br>ultoa() 将无符号长整型值转换为字符串<br>2.printf(“%c”,(char)s)(ASCII码)<h3 id="include"><a href="#include" class="headerlink" title="#include:"></a>#include<string.h>:</string.h></h3><a href="http://blog.csdn.net/xuefu2008/article/details/4646092" target="_blank" rel="external">strlen</a>:计算字符串s的(unsigned int型）长度<br><a href="http://c.biancheng.net/cpp/html/162.html" target="_blank" rel="external">strcmp</a>:用来比较字符串（区分大小写）<br><a href="http://c.biancheng.net/cpp/html/164.html" target="_blank" rel="external">strcpy</a>:将参数src 字符串拷贝至参数dest 所指的地址<h3 id="getchar"><a href="#getchar" class="headerlink" title="getchar():"></a>getchar():</h3></li>
+<li>getchar()<br>getchar由宏实现：#define getchar() getc(stdin)。getchar有一个int型的返回值。当程序调用getchar时.程序就等着用户按键。用户输入的字符被存放在键盘缓冲区中。直到用户按回车为止（回车字符也放在缓冲区中）。当用户键入回车之后，getchar才开始从stdio流中每次读入一个字符。getchar函数的返回值是用户输入的字符的ASCⅡ码，如出错返回-1，且将用户输入的字符回显到屏幕。如用户在按回车之前输入了不止一个字符，其他字符会保留在键盘缓存区中，等待后续getchar调用读取。也就是说，后续的getchar调用不会等待用户按键，而直接读取缓冲区中的字符，直到缓冲区中的字符读完为后，才等待用户按键。</li>
+<li>getch()<br>getch与getchar基本功能相同，差别是getch直接从键盘获取键值，不等待用户按回车，只要用户按一个键，getch就立刻返回，getch返回值是用户输入的ASCⅡ码，出错返回-1。输入的字符不会回显在屏幕上.getch函数常用于程序调试中，在调试时，在关键位置显示有关的结果以待查看，然后用getch函数暂停程序运行，当按任意键后程序继续运行。<br>这个版本忽略了个重点，getch()是非缓冲输入函数，就是不能用getch()来接受缓冲区已存在的字符，如以下C++程序段，运行时如果输入1 2 3 a时必须用getchar()才能在后面程序获得正常输入，即使先前已经恢复流了，此处用getch()是万万不行的。</li>
+<li>getche()<br>这个函数与前两上类似，功能也相近，都是输入一个字符，返回值同样是输入字符的ASCII码，但不同的是，此函数在输入后立即从控制台取字符，不以回车为结束（带回显)。<h3 id="gets"><a href="#gets" class="headerlink" title="gets():"></a><a href="http://c.biancheng.net/cpp/html/260.html" target="_blank" rel="external">gets()</a>:</h3>从流中读取字符串，直到出现换行符或读到文件尾为止，最后加上NULL作为字符串结束。所读取的字符串暂存在给定的参数string中。<h3 id="回文串："><a href="#回文串：" class="headerlink" title="回文串："></a>回文串：</h3>#include <stdio.h><br>#include<string.h><br>int main() {<br>  int n,i,j;<br>  char s[128];<br>  scanf(“%d”,&amp;n);<br>  getchar();<br>  while(n–) {<pre><code>int a=0;
+scanf(&quot;%s&quot;,s);
+j = strlen(s);
+for (i = 0; i &lt; j; i++) {
+    if (s[i] == s[j - i - 1]) {
+        a++;
+    }
+}
+if(a==j) {
+    printf(&quot;yes\n&quot;);
+}
+else {
+    printf(&quot;no\n&quot;);
+}
+</code></pre>  }<br>  return 0;<br>}<h3 id="求公因子"><a href="#求公因子" class="headerlink" title="求公因子"></a>求公因子</h3>int gcd(int m,int n)<br>{<br>  int r,tmp1,tmp2;<br>  r=m%n;<br>  while(r&gt;0)<br>  {<pre><code>r=m%n;
+tmp1=n;m=tmp1;
+tmp2=r;n=tmp2;
+</code></pre>  }<br>  return m;<h3 id="memest"><a href="#memest" class="headerlink" title="memest:"></a><a href="http://www.cppblog.com/luxuejuncarl/archive/2007/03/02/19137.html" target="_blank" rel="external">memest</a>:</h3>作用是在一段内存块中填充某个给定的值</string.h></stdio.h></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/博客，文章/" rel="tag"># 博客，文章</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/11/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/16/学而/" rel="prev" title="html和css">
+                html和css <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">baoxinyiu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">Tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#要空格："><span class="nav-number">1.</span> <span class="nav-text">要空格：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不要空格："><span class="nav-number">2.</span> <span class="nav-text">不要空格：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化："><span class="nav-number">3.</span> <span class="nav-text">初始化：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#等于／判断／输出："><span class="nav-number">4.</span> <span class="nav-text">等于／判断／输出：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串："><span class="nav-number">5.</span> <span class="nav-text">字符串：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组中数字交换位置的时候记住标号就行，不用记住数"><span class="nav-number">6.</span> <span class="nav-text">数组中数字交换位置的时候记住标号就行，不用记住数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#形参实参："><span class="nav-number">7.</span> <span class="nav-text">形参实参：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数调用改变参数："><span class="nav-number">8.</span> <span class="nav-text">函数调用改变参数：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自增自减"><span class="nav-number">9.</span> <span class="nav-text">自增自减</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题意："><span class="nav-number">10.</span> <span class="nav-text">题意：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四舍五入："><span class="nav-number">11.</span> <span class="nav-text">四舍五入：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逆序："><span class="nav-number">12.</span> <span class="nav-text">逆序：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#整型数和字符串的相互转换："><span class="nav-number">13.</span> <span class="nav-text">整型数和字符串的相互转换：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#include"><span class="nav-number">14.</span> <span class="nav-text">#include:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getchar"><span class="nav-number">15.</span> <span class="nav-text">getchar():</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gets"><span class="nav-number">16.</span> <span class="nav-text">gets():</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回文串："><span class="nav-number">17.</span> <span class="nav-text">回文串：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#求公因子"><span class="nav-number">18.</span> <span class="nav-text">求公因子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#memest"><span class="nav-number">19.</span> <span class="nav-text">memest:</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">baoxinyiu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
