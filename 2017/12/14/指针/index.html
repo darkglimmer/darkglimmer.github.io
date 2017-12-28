@@ -86,10 +86,14 @@
 <meta property="og:url" content="http://yoursite.com/2017/12/14/指针/index.html">
 <meta property="og:site_name" content="darkglimmer‘s blog">
 <meta property="og:description" content="关于指针的一些注意点和想法">
-<meta property="og:updated_time" content="2017-12-17T03:23:13.000Z">
+<meta property="og:image" content="https://cdn.glitch.com/6fab60b1-32c5-42ee-b5f3-40edd35dc042%2F%E7%9B%B4%E6%8E%A5.png?1514448360660">
+<meta property="og:image" content="https://cdn.glitch.com/6fab60b1-32c5-42ee-b5f3-40edd35dc042%2F%E5%85%A8.png?1514448373426">
+<meta property="og:image" content="https://cdn.glitch.com/6fab60b1-32c5-42ee-b5f3-40edd35dc042%2F%E7%BB%84.png?1514448385565">
+<meta property="og:updated_time" content="2017-12-28T08:25:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C指针">
 <meta name="twitter:description" content="关于指针的一些注意点和想法">
+<meta name="twitter:image" content="https://cdn.glitch.com/6fab60b1-32c5-42ee-b5f3-40edd35dc042%2F%E7%9B%B4%E6%8E%A5.png?1514448360660">
 
 
 
@@ -300,9 +304,29 @@
 
       
         <h1 id="关于指针的一些注意点和想法"><a href="#关于指针的一些注意点和想法" class="headerlink" title="关于指针的一些注意点和想法"></a>关于指针的一些注意点和想法</h1><a id="more"></a>
-<p>### </p>
-<p>malloc函数<br><a href="http://www.cppblog.com/sandywin/archive/2011/09/14/155746.html" target="_blank" rel="external">http://www.cppblog.com/sandywin/archive/2011/09/14/155746.html</a></p>
-
+<h3 id="虚拟内存-数据库系统"><a href="#虚拟内存-数据库系统" class="headerlink" title="虚拟内存(数据库系统)"></a>虚拟内存(<a href="https://books.google.com.eg/books?id=Xs3bi8LJPLwC&amp;pg=PA18&amp;lpg=PA18&amp;dq=%E8%99%9A%E6%8B%9F%E5%AD%98%E5%82%A8%E5%99%A8%E4%BD%9C%E7%94%A8&amp;source=bl&amp;ots=V9umUG1PQ-&amp;sig=nUX2U08FM9fzsMhAcxCarydW9KA&amp;hl=zh-CN&amp;sa=X&amp;ved=0ahUKEwjlvdvZlqzYAhXhs1QKHWAED_gQ6AEIVjAG#v=onepage&amp;q=%E8%99%9A%E6%8B%9F%E5%AD%98%E5%82%A8%E5%99%A8%E4%BD%9C%E7%94%A8&amp;f=false" target="_blank" rel="external">数据库系统</a>)</h3><p>cache：高速缓存，其原始意义是指访问速度比一般随机存取内存快的一种RAM，通常它不像系统主存那样使用DRAM技术，而使用昂贵但较快速的SRAM技术。</p>
+<p>虚拟地址—-又称逻辑地址，是指访问虚拟空间的地址。由于指令中给出的地址码是按虚存空间来统一编址的，因此指令的地址码实际上是虚拟地址。<br>物理地址—-是指访问主存空间的地址</p>
+<h4 id="虚拟内存："><a href="#虚拟内存：" class="headerlink" title="虚拟内存："></a><a href="https://zh.wikipedia.org/wiki/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98" target="_blank" rel="external">虚拟内存</a>：</h4><p>它使得应用程序认为它拥有连续的可用的内存（一个连续完整的地址空间），而实际上，它通常是被<br>分隔成多个物理内存碎片，还有部分暂时存储在外部磁盘存储器上，在需要时进行数据交换。<br>电脑中所运行的程序均需经由内存执行，若执行的程序很大或很多，则会导致内存消耗殆尽。为解决该问题，Windows中运用了虚拟内存技术，<strong>即匀出一部分硬盘空间来充当内存使用</strong>。当内存耗尽时，电脑就会自动调用硬盘来充当内存，以缓解内存的紧张。若计算机缺乏运行程序或操作所需的随机存储器 (RAM)，则 Windows 会用之进行补偿。它将计算机的RAM和硬盘上的临时空间组合。当RAM运行速率缓慢时，它便将数据从RAM移动到称为“分页文件”的空间中。将数据移入与移出分页文件可释放RAM，以便完成工作。<br> 一般而言，计算机的RAM越多，程序运行得越快。若计算机的速率由于RAM可用空间匮乏而减缓，则可尝试借增加虚拟内存来进行补偿。但是，计算机从RAM读取数据的速率要比从硬盘读取数据的速率快，因而扩增RAM容量（可加内存条）是最佳选择。</p>
+<p>作用：1. 读写内存的安全性<br>物理内存本身是不限制访问的，任何地址都可以读写，而操作系统要求不同的页面具有不同的访问权限，这是利用CPU模式和MMU的内存保护机制实现的。这样，执行错误指令或恶意代码的破坏能力受到了限制，顶多使当前进程因段错误终止，而不会影响整个系统的稳定性。<br>2.让每个进程有独立的地址空间<br>　所谓独立的地址空间是指，不同进程中的同一个VA被MMU映射到不同的PA,并且在某一个进程中访问任何地址都不可能访问到另外一个进程的数据。<br>3.VA到PA的映射会给分配和释放内存带来方便<br>物理地址不连续的几块内存可以映射成虚拟地址连续的一块内存。可以分配多个不连续的物理页面而映射到连续的虚拟地址范围。<br>4.一个系统如果同时运行着很多进程，为各进程分配的内存之和可能会大于实际可用的物理内存，虚拟内存管理使得这种情况下各进程仍然能够正常运行<br>因为各进程分配的只不过是虚拟内存的页面，这些页面的数据可以映射到物理页面，也可以临时保存到磁盘上而不占用物理页面，在磁盘上临时保存虚拟内存页面的可能是一个磁盘分区，也可能是一个磁盘文件，称为交换设备（Swap Device）。当物理内存不够用时，将一些不常用的物理页面中的数据临时保存到交换设备，然后这个物理页面就认为是空闲的了，可以重新分配给进程使用，这个过程称为换出（Pageout）。如果进程要用到被换出的页面，就从交换设备再加载回物理内存，这称为换入（Pagein）。换出和换入操作统称为换页（Paging）</p>
+<h4 id="虚拟存储器"><a href="#虚拟存储器" class="headerlink" title="虚拟存储器"></a><a href="http://blog.csdn.net/yeqishi/article/details/6362977" target="_blank" rel="external">虚拟存储器</a></h4><p><strong>虚拟存储器是由硬件和操作系统自动实现存储信息调度和管理的。它的工作过程包括6个步骤</strong>：</p>
+<p>　　①中央处理器访问主存的逻辑地址分解成组号a和组内地址b，并对组号a进行地址变换，即将逻辑组号a作为索引，查地址变换表，以确定该组信息是否存放在主存内。</p>
+<p>　　②如该组号已在主存内，则转而执行④;如果该组号不在主存内，则检查主存中是否有空闲区，如果没有，便将某个暂时不用的组调出送往辅存，以便将这组信息调入主存。</p>
+<p>　　③从辅存读出所要的组，并送到主存空闲区，然后将那个空闲的物理组号a和逻辑组号a登录在地址变换表中。</p>
+<p>　　④从地址变换表读出与逻辑组号a对应的物理组号a。</p>
+<p>　　⑤从物理组号a和组内字节地址b得到物理地址。</p>
+<p>　　⑥根据物理地址从主存中存取必要的信息。</p>
+<p><strong>虚拟存储器可以分为三类：页式、段式和段页式。（调度方式）</strong></p>
+<p>页式：以页做为虚拟存储器系统的最小单位，把主存和虚拟空间分割成固定大小的页面。<br>页式地址空间中所有地址连续。（分页无逻辑意义）</p>
+<p>段式：以程序逻辑结构形成的段（如某一独立程序模块，子程序等）作为主存分配依据的一种段式虚拟存储器管理办法。需建立段表，可以将程序的虚拟地址转化为主存的实地址。<br>段长由程序员设定，是不固定的。段式储存器是由段号+段内偏移量组成完整地址的，段内地址连续而段间不连续。（会产生大量内存碎片且段表庞大不易查询）</p>
+<p>段页式：以上结合。</p>
+<p><strong>虚拟存储器<a href="http://blog.csdn.net/stormbjm/article/details/8952792" target="_blank" rel="external">地址映射</a>基本上有3种形虚拟存储器工作过程式：全相联映像、直接映像和组相联映像。</strong></p>
+<p>直接映像：主存中的每一块只能被放置在cache中唯一一个位置<br><img src="https://cdn.glitch.com/6fab60b1-32c5-42ee-b5f3-40edd35dc042%2F%E7%9B%B4%E6%8E%A5.png?1514448360660" style="zoom:40%"><br>全相联映像：主存中的任一块能被放置到cache中任意位置的<br><img src="https://cdn.glitch.com/6fab60b1-32c5-42ee-b5f3-40edd35dc042%2F%E5%85%A8.png?1514448373426" style="zoom:40%"><br>组相联映像：以上两种方式的折中<br><img src="https://cdn.glitch.com/6fab60b1-32c5-42ee-b5f3-40edd35dc042%2F%E7%BB%84.png?1514448385565" style="zoom:40%"></p>
+<p><strong>替换规则用来确定替换主存中哪一部分，以便腾空部分主存，存放来自辅存要调入的那部分内容。</strong><br>常见的替换算法有4种。</p>
+<p>　　①随机替换算法：用软件或硬件随机数产生器确定替换的页面。</p>
+<p>　　②先进先出（FIFO）：cahce为每块设置时间标志，先调入cache的信息块先替换。</p>
+<p>　　③近期最少使用算法（LRU）：cahce控制器为每块设置访问标志，选择近期最少使用的信息块作为代替。</p>
+<p>　　④优化替换算法：先执行一次程序，统计cache的替换情况，然后使用先验信息在第二次执行程序时可以用最有效的方式替换。（替换最长时间以后才使用的页面。这是理想化的算法，只能作为衡量其他各种算法优劣的标准。）</p>
+<h3 id="C中的堆管理"><a href="#C中的堆管理" class="headerlink" title="C中的堆管理"></a><a href="http://www.cppblog.com/sandywin/archive/2011/09/14/155746.html" target="_blank" rel="external">C中的堆管理</a></h3>
       
     </div>
     
@@ -469,7 +493,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于指针的一些注意点和想法"><span class="nav-number">1.</span> <span class="nav-text">关于指针的一些注意点和想法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于指针的一些注意点和想法"><span class="nav-number">1.</span> <span class="nav-text">关于指针的一些注意点和想法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟内存-数据库系统"><span class="nav-number">1.0.1.</span> <span class="nav-text">虚拟内存(数据库系统)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟内存："><span class="nav-number">1.0.1.1.</span> <span class="nav-text">虚拟内存：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟存储器"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">虚拟存储器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C中的堆管理"><span class="nav-number">1.0.2.</span> <span class="nav-text">C中的堆管理</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
