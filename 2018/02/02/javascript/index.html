@@ -85,7 +85,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/02/02/javascript/index.html">
 <meta property="og:site_name" content="darkglimmer‘s blog">
 <meta property="og:description" content="初识js一些注意点">
-<meta property="og:updated_time" content="2018-02-03T06:16:17.967Z">
+<meta property="og:updated_time" content="2018-02-04T06:50:48.885Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript">
 <meta name="twitter:description" content="初识js一些注意点">
@@ -184,7 +184,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -194,7 +194,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -258,7 +258,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-02T14:25:40+08:00">
                 2018-02-02
@@ -299,6 +299,11 @@
 
       
         <h1 id="初识js一些注意点"><a href="#初识js一些注意点" class="headerlink" title="初识js一些注意点"></a>初识js一些注意点</h1><a id="more"></a>
+<h4 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h4><ul>
+<li>那些定义在构造器函数中的、用于给予对象实例的。这些都很容易发现 - 在您自己的代码中，它们是构造函数中使用this.x = x类型的行；在内置的浏览器代码中，它们是可用于对象实例的成员（通常通过使用new关键字调用构造函数来创建，例如var myInstance = new myConstructor()）。</li>
+<li>那些直接在构造函数上定义、仅在构造函数上可用的。这些通常仅在内置的浏览器对象中可用，并通过被直接链接到构造函数而不是实例来识别。 例如Object.keys()。</li>
+<li>那些在构造函数原型上定义、由所有实例和对象类继承的。这些包括在构造函数的原型属性上定义的任何成员，如myConstructor.prototype.x()。</li>
+</ul>
 <h4 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h4><p>“===”必须是同样类型的同样值比较<br>“==”自动转化过类型后的比较</p>
 <h4 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h4><p>JSON 只允许”property”: value syntax形式的属性定义。属性名必须用双引号括起来。且属性定义不允许使用简便写法。<br>JSON中，属性的值仅允许字符串，数字，数组，true，false，null或其他（JSON）对象。<br>JSON中，不允许将值设置为函数。<br>Date 等对象，经JSON.parse()处理后，会变成字符串。<br>JSON.parse() 不会处理计算的属性名，会当做错误抛出。</p>
 <h4 id="get和set"><a href="#get和set" class="headerlink" title="get和set"></a>get和set</h4><p>get：可创建一个新的伪属性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">get latest() &#123;</div><div class="line">    if (this.log.length == 0) return undefined;</div><div class="line">    return this.log[this.log.length - 1];</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
@@ -357,6 +362,9 @@
 <h5 id="Constructor-Pattern"><a href="#Constructor-Pattern" class="headerlink" title="Constructor Pattern"></a>Constructor Pattern</h5><p>new foo()这种形式的调用被称为Constructor Pattern，其关键字new就很能说明问题，非常容易识别。<br>在这种模式下，foo函数内部的this永远是new foo()返回的对象。</p>
 <h5 id="Apply-And-Call-Invocation"><a href="#Apply-And-Call-Invocation" class="headerlink" title="Apply And Call Invocation"></a>Apply And Call Invocation</h5><p>foo.call(thisObject)和foo.apply(thisObject)的形式被称为Apply Pattern，使用了内置的call和apply函数。<br>在这种模式下，call和apply的第一个参数就是foo函数体内的this，如果thisObject是null或undefined，那么会变成Global对象。</p>
 <h4 id="Object-create实现类式继承"><a href="#Object-create实现类式继承" class="headerlink" title="Object.create实现类式继承"></a>Object.create实现类式继承</h4><p>Object.create(proto[, propertiesObject])<br>proto–新创建对象的原型对象。<br>propertiesObject–可选。如果没有指定为 undefined，则是要添加到新创建对象的可枚举属性（即其自身定义的属性，而不是其原型链上的枚举属性）对象的属性描述符以及相应的属性名称。这些属性对应Object.defineProperties()的第二个参数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">// Shape - 父类(superclass)</div><div class="line">function Shape() &#123;</div><div class="line">  this.x = 0;</div><div class="line">  this.y = 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 父类的方法</div><div class="line">Shape.prototype.move = function(x, y) &#123;</div><div class="line">  this.x += x;</div><div class="line">  this.y += y;</div><div class="line">  console.info(&apos;Shape moved.&apos;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">// Rectangle - 子类(subclass)</div><div class="line">function Rectangle() &#123;</div><div class="line">  Shape.call(this); // call super constructor.</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 子类续承父类</div><div class="line">1.</div><div class="line">Rectangle.prototype = Object.create(Shape.prototype);</div><div class="line">Rectangle.prototype.constructor = Rectangle;</div><div class="line">2.</div><div class="line">var rect = new Rectangle();</div><div class="line"></div><div class="line">// 因为使用“.prototype =...”后,constructor会改变为“=...”的那个</div><div class="line">// constructor，所以要重新指定.constructor 为自身。</div></pre></td></tr></table></figure></p>
+<h4 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h4><p>如Array或Map具有默认的迭代行为，而其他类型（如Object）没有。<br>这个对象（或其原型链中的一个对象）必须具有带 Symbol.iterator 键的属性<br><strong>迭代器</strong><br>next()方法可以用来依次访问对象中的键值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">function makeIterator(array)&#123;</div><div class="line">    var nextIndex = 0;</div><div class="line"></div><div class="line">    return &#123;</div><div class="line">       next: function()&#123;</div><div class="line">           return nextIndex &lt; array.length ?</div><div class="line">               &#123;value: array[nextIndex++], done: false&#125; :</div><div class="line">               &#123;done: true&#125;;</div><div class="line">       &#125;</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var it = makeIterator([&apos;yo&apos;, &apos;ya&apos;]);</div><div class="line">console.log(it.next().value); // &apos;yo&apos;</div></pre></td></tr></table></figure></p>
+<p><strong>生成器</strong><br>GeneratorFunction 是一个可以作为迭代器工厂的特殊函数。当它被执行时会返回一个新的Generator对象。 如果使用function*语法，则函数将变为GeneratorFunction。</p>
+<p><code>yield</code>用来暂停和恢复一个生成器函数:<br>yield关键字实际返回一个IteratorResult对象，它有两个属性，value和done。value属性是对yield表达式求值的结果，而done是false，表示生成器函数尚未完全完成。到达生成器函数的结尾；在这种情况下，生成器的执行结束，并且IteratorResult给调用者返回undefined并且done为true。<br>一旦在 yield 表达式处暂停，除非外部调用生成器的 next() 方法，否则生成器的代码将不能继续执行。每次调用生成器的next()方法时，生成器都会恢复执行，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function* countAppleSales () &#123;</div><div class="line">  var saleList = [3, 7, 5];</div><div class="line">  for (var i = 0; i &lt; saleList.length; i++) &#123;</div><div class="line">    yield saleList[i];</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var appleStore = countAppleSales(); // Generator &#123; &#125;</div><div class="line">console.log(appleStore.next()); // &#123; value: 3, done: false &#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -443,10 +451,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -467,7 +475,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">7</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
             
@@ -480,7 +488,7 @@
               <div class="site-state-item site-state-tags">
                 
                   <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">Tags</span>
                 
               </div>
             
@@ -514,7 +522,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#初识js一些注意点"><span class="nav-number">1.</span> <span class="nav-text">初识js一些注意点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#比较"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JSON"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">JSON</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#get和set"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">get和set</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Object-defineProperty-方法"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">Object.defineProperty() 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可枚举属性与不可枚举属性"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">可枚举属性与不可枚举属性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本包装类型-引用类型"><span class="nav-number">1.0.0.5.1.</span> <span class="nav-text">基本包装类型(引用类型)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#枚举"><span class="nav-number">1.0.0.5.2.</span> <span class="nav-text">枚举</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调用"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">调用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Function-Invocation-Pattern（函数调用）"><span class="nav-number">1.0.0.6.1.</span> <span class="nav-text">Function Invocation Pattern（函数调用）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Method-Invocation-Pattern"><span class="nav-number">1.0.0.6.2.</span> <span class="nav-text">Method Invocation Pattern</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Constructor-Pattern"><span class="nav-number">1.0.0.6.3.</span> <span class="nav-text">Constructor Pattern</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Apply-And-Call-Invocation"><span class="nav-number">1.0.0.6.4.</span> <span class="nav-text">Apply And Call Invocation</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Object-create实现类式继承"><span class="nav-number">1.0.0.7.</span> <span class="nav-text">Object.create实现类式继承</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#初识js一些注意点"><span class="nav-number">1.</span> <span class="nav-text">初识js一些注意点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对象"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#比较"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JSON"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">JSON</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#get和set"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">get和set</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Object-defineProperty-方法"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">Object.defineProperty() 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可枚举属性与不可枚举属性"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">可枚举属性与不可枚举属性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本包装类型-引用类型"><span class="nav-number">1.0.0.6.1.</span> <span class="nav-text">基本包装类型(引用类型)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#枚举"><span class="nav-number">1.0.0.6.2.</span> <span class="nav-text">枚举</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调用"><span class="nav-number">1.0.0.7.</span> <span class="nav-text">调用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Function-Invocation-Pattern（函数调用）"><span class="nav-number">1.0.0.7.1.</span> <span class="nav-text">Function Invocation Pattern（函数调用）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Method-Invocation-Pattern"><span class="nav-number">1.0.0.7.2.</span> <span class="nav-text">Method Invocation Pattern</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Constructor-Pattern"><span class="nav-number">1.0.0.7.3.</span> <span class="nav-text">Constructor Pattern</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Apply-And-Call-Invocation"><span class="nav-number">1.0.0.7.4.</span> <span class="nav-text">Apply And Call Invocation</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Object-create实现类式继承"><span class="nav-number">1.0.0.8.</span> <span class="nav-text">Object.create实现类式继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#迭代"><span class="nav-number">1.0.0.9.</span> <span class="nav-text">迭代</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -544,7 +552,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
