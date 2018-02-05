@@ -85,7 +85,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/02/02/javascript/index.html">
 <meta property="og:site_name" content="darkglimmer‘s blog">
 <meta property="og:description" content="初识js一些注意点">
-<meta property="og:updated_time" content="2018-02-04T06:50:48.885Z">
+<meta property="og:updated_time" content="2018-02-05T09:42:20.114Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript">
 <meta name="twitter:description" content="初识js一些注意点">
@@ -184,7 +184,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -194,7 +194,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -258,7 +258,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-02T14:25:40+08:00">
                 2018-02-02
@@ -365,6 +365,49 @@
 <h4 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h4><p>如Array或Map具有默认的迭代行为，而其他类型（如Object）没有。<br>这个对象（或其原型链中的一个对象）必须具有带 Symbol.iterator 键的属性<br><strong>迭代器</strong><br>next()方法可以用来依次访问对象中的键值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">function makeIterator(array)&#123;</div><div class="line">    var nextIndex = 0;</div><div class="line"></div><div class="line">    return &#123;</div><div class="line">       next: function()&#123;</div><div class="line">           return nextIndex &lt; array.length ?</div><div class="line">               &#123;value: array[nextIndex++], done: false&#125; :</div><div class="line">               &#123;done: true&#125;;</div><div class="line">       &#125;</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var it = makeIterator([&apos;yo&apos;, &apos;ya&apos;]);</div><div class="line">console.log(it.next().value); // &apos;yo&apos;</div></pre></td></tr></table></figure></p>
 <p><strong>生成器</strong><br>GeneratorFunction 是一个可以作为迭代器工厂的特殊函数。当它被执行时会返回一个新的Generator对象。 如果使用function*语法，则函数将变为GeneratorFunction。</p>
 <p><code>yield</code>用来暂停和恢复一个生成器函数:<br>yield关键字实际返回一个IteratorResult对象，它有两个属性，value和done。value属性是对yield表达式求值的结果，而done是false，表示生成器函数尚未完全完成。到达生成器函数的结尾；在这种情况下，生成器的执行结束，并且IteratorResult给调用者返回undefined并且done为true。<br>一旦在 yield 表达式处暂停，除非外部调用生成器的 next() 方法，否则生成器的代码将不能继续执行。每次调用生成器的next()方法时，生成器都会恢复执行，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function* countAppleSales () &#123;</div><div class="line">  var saleList = [3, 7, 5];</div><div class="line">  for (var i = 0; i &lt; saleList.length; i++) &#123;</div><div class="line">    yield saleList[i];</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var appleStore = countAppleSales(); // Generator &#123; &#125;</div><div class="line">console.log(appleStore.next()); // &#123; value: 3, done: false &#125;</div></pre></td></tr></table></figure></p>
+<h4 id="箭头函数："><a href="#箭头函数：" class="headerlink" title="箭头函数："></a>箭头函数：</h4><p>(参数1, 参数2, …, 参数N) =&gt; {函数声明}<br>(参数1, 参数2, …, 参数N) =&gt; 表达式（单一）<br>//相当于：(参数1, 参数2, …, 参数N) =&gt;{ return表达式}</p>
+<p>// 当只有一个参数时，圆括号是可选的：<br>(单一参数) =&gt; {函数声明}<br>单一参数 =&gt; {函数声明}<br>// 没有参数的函数应该写成一对圆括号。<br>() =&gt; {函数声明}</p>
+<h4 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h4><p>如果提供一个初始值作为reduce方法的第二个参数，以下是运行过程及结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[0, 1, 2, 3, 4].reduce((accumulator, currentValue, currentI</div><div class="line">ndex, array) =&gt; &#123; return accumulator + currentValue; &#125;, 10 );</div><div class="line">//10是accumulator的初始值</div><div class="line">//currentValue的初始值是数组第一个值，会一次次++</div></pre></td></tr></table></figure></p>
+<h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><p>map方法–会给原数组中的每个元素都按顺序调用一次callback函数,callback每次执行后的返回值（包括 undefined）组合起来形成一个新数组<br><strong>callback函数只会在有值的索引上被调用，而那些从来没被赋过值或者使用delete删除的索引则不会被调用</strong><br>Array.from可以将数组空元素设为undefined.只有Array.from(a),map才会调用callback函数作用于原来的空元素<br>array可以有空槽,ength会算空槽 undefined!=空槽 undefined属于有值的情况 </p>
+<h4 id="按序排列一个数组"><a href="#按序排列一个数组" class="headerlink" title="按序排列一个数组"></a>按序排列一个数组</h4><h5 id="sort"><a href="#sort" class="headerlink" title="sort()"></a>sort()</h5><p>可以定义了一个比较方式,如果不对sort()定义就通过ascii码比较，而不是通过数值大小比较<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function sortNumber(a,b)&#123;</div><div class="line">    return a - b</div><div class="line">&#125;</div><div class="line">arr.sort(sortNumber)</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">arrDemo.sort(function(a,b)&#123;return a&gt;b?1:-1&#125;);//从小到大排序(和0比较，如果大于0，就把b排在a前。)</div><div class="line">arrDemo.sort(function(a,b)&#123;return a&lt;b?1:-1&#125;);//从大到小排序</div></pre></td></tr></table></figure>
+<h4 id="扩展运算符"><a href="#扩展运算符" class="headerlink" title="扩展运算符"></a>扩展运算符</h4><ul>
+<li>主要用于函数调用/通过函数处理，将一个数组，变为参数序列<br>1.扩展运算符与正常的函数参数可以结合使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function f(v, w, x, y, z) &#123; &#125;</div><div class="line">const args = [0, 1];</div><div class="line">f(-1, ...args, 2, ...[3]);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>2.放置表达式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">const arr = [</div><div class="line">  ...(x &gt; 0 ? [&apos;a&apos;] : []),</div><div class="line">  &apos;b&apos;,</div><div class="line">];</div></pre></td></tr></table></figure></p>
+<p>注：扩展运算符后面是一个空数组，则不产生任何效果</p>
+<ul>
+<li><p>展开数组，将数组转为函数的参数（代替apply方法）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Array.prototype.push.apply(arr1, arr2);</div><div class="line">//push方法的参数不能是数组，所以只好通过apply方法变通使用push方法。</div><div class="line">等同于arr1.push(...arr2);</div><div class="line">//有了扩展运算符，就可以直接将数组传入push方法。</div></pre></td></tr></table></figure>
+</li>
+<li><p>复制数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">const a2 = [...a1]</div><div class="line">const [...a2] = a1;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>上面的两种写法，a2都是a1的克隆。</p>
+<ul>
+<li><p>合并数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">arr1.concat(arr2, arr3);</div><div class="line">[...arr1, ...arr2, ...arr3]</div></pre></td></tr></table></figure>
+</li>
+<li><p>与解构赋值结合起来，用于生成数组<br>(扩展运算符用于数组赋值，只能放在参数的最后一位，否则会报错)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">onst [first, ...rest] = [1, 2, 3, 4, 5];</div><div class="line">first // 1</div><div class="line">rest  // [2, 3, 4, 5]</div><div class="line"></div><div class="line">const [first, ...rest] = [];</div><div class="line">first // undefined</div><div class="line">rest  // []</div><div class="line"></div><div class="line">const [first, ...rest] = [&quot;foo&quot;];</div><div class="line">first  // &quot;foo&quot;</div><div class="line">rest   // []</div></pre></td></tr></table></figure>
+</li>
+<li><p>将字符串转为真正的数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[...&apos;hello&apos;]</div><div class="line">// [ &quot;h&quot;, &quot;e&quot;, &quot;l&quot;, &quot;l&quot;, &quot;o&quot; ]</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>能够正确识别四个字节的 Unicode 字符<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&apos;x\uD83D\uDE80y&apos;.length // 2</div><div class="line">[...&apos;x\uD83D\uDE80y&apos;].length // 3</div></pre></td></tr></table></figure></p>
+<ul>
+<li>任何 Iterator 接口的对象，都可以用扩展运算符转为真正的数组。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">let nodeList = document.querySelectorAll(&apos;div&apos;);</div><div class="line">let array = [...nodeList];</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>上面代码中，querySelectorAll方法返回的是一个nodeList对象。它不是数组，而是一个类似数组的对象。这时，扩展运算符可以将其转为真正的数组，原因就在于NodeList对象实现了 Iterator 。</p>
+<ul>
+<li>Map 和 Set 结构，Generator 函数<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">let map = new Map([</div><div class="line">  [1, &apos;one&apos;],</div><div class="line">  [2, &apos;two&apos;],</div><div class="line">  [3, &apos;three&apos;],</div><div class="line">]);</div><div class="line"></div><div class="line">let arr = [...map.keys()]; // [1, 2, 3]</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">const go = function*()&#123;</div><div class="line">  yield 1;</div><div class="line">  yield 2;</div><div class="line">  yield 3;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">[...go()] // [1, 2, 3]</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -451,10 +494,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -475,7 +518,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">7</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -488,7 +531,7 @@
               <div class="site-state-item site-state-tags">
                 
                   <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">Tags</span>
+                  <span class="site-state-item-name">tags</span>
                 
               </div>
             
@@ -522,7 +565,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#初识js一些注意点"><span class="nav-number">1.</span> <span class="nav-text">初识js一些注意点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对象"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#比较"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JSON"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">JSON</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#get和set"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">get和set</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Object-defineProperty-方法"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">Object.defineProperty() 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可枚举属性与不可枚举属性"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">可枚举属性与不可枚举属性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本包装类型-引用类型"><span class="nav-number">1.0.0.6.1.</span> <span class="nav-text">基本包装类型(引用类型)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#枚举"><span class="nav-number">1.0.0.6.2.</span> <span class="nav-text">枚举</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调用"><span class="nav-number">1.0.0.7.</span> <span class="nav-text">调用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Function-Invocation-Pattern（函数调用）"><span class="nav-number">1.0.0.7.1.</span> <span class="nav-text">Function Invocation Pattern（函数调用）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Method-Invocation-Pattern"><span class="nav-number">1.0.0.7.2.</span> <span class="nav-text">Method Invocation Pattern</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Constructor-Pattern"><span class="nav-number">1.0.0.7.3.</span> <span class="nav-text">Constructor Pattern</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Apply-And-Call-Invocation"><span class="nav-number">1.0.0.7.4.</span> <span class="nav-text">Apply And Call Invocation</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Object-create实现类式继承"><span class="nav-number">1.0.0.8.</span> <span class="nav-text">Object.create实现类式继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#迭代"><span class="nav-number">1.0.0.9.</span> <span class="nav-text">迭代</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#初识js一些注意点"><span class="nav-number">1.</span> <span class="nav-text">初识js一些注意点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对象"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#比较"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JSON"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">JSON</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#get和set"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">get和set</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Object-defineProperty-方法"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">Object.defineProperty() 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可枚举属性与不可枚举属性"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">可枚举属性与不可枚举属性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本包装类型-引用类型"><span class="nav-number">1.0.0.6.1.</span> <span class="nav-text">基本包装类型(引用类型)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#枚举"><span class="nav-number">1.0.0.6.2.</span> <span class="nav-text">枚举</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调用"><span class="nav-number">1.0.0.7.</span> <span class="nav-text">调用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Function-Invocation-Pattern（函数调用）"><span class="nav-number">1.0.0.7.1.</span> <span class="nav-text">Function Invocation Pattern（函数调用）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Method-Invocation-Pattern"><span class="nav-number">1.0.0.7.2.</span> <span class="nav-text">Method Invocation Pattern</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Constructor-Pattern"><span class="nav-number">1.0.0.7.3.</span> <span class="nav-text">Constructor Pattern</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Apply-And-Call-Invocation"><span class="nav-number">1.0.0.7.4.</span> <span class="nav-text">Apply And Call Invocation</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Object-create实现类式继承"><span class="nav-number">1.0.0.8.</span> <span class="nav-text">Object.create实现类式继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#迭代"><span class="nav-number">1.0.0.9.</span> <span class="nav-text">迭代</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#箭头函数："><span class="nav-number">1.0.0.10.</span> <span class="nav-text">箭头函数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#reduce"><span class="nav-number">1.0.0.11.</span> <span class="nav-text">reduce</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map"><span class="nav-number">1.0.0.12.</span> <span class="nav-text">map</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#按序排列一个数组"><span class="nav-number">1.0.0.13.</span> <span class="nav-text">按序排列一个数组</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#sort"><span class="nav-number">1.0.0.13.1.</span> <span class="nav-text">sort()</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#扩展运算符"><span class="nav-number">1.0.0.14.</span> <span class="nav-text">扩展运算符</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -552,7 +595,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
