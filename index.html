@@ -181,7 +181,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -191,7 +191,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -257,7 +257,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-07T20:06:43+08:00">
                 2018-03-07
@@ -304,6 +304,8 @@
 <p>1.package.json中的<a href="http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html" target="_blank" rel="external">script</a>定义脚本命令。每当执行npm run，就会自动新建一个 Shell，在这个 Shell 里面执行指定的脚本命令。因此，只要是 Shell（一般是 Bash）可以运行的命令，就可以写在 npm 脚本里面。<br>比较特别的是，npm run新建的这个 Shell，会将当前目录的node_modules/.bin子目录加入PATH变量，执行结束后，再将PATH变量恢复原样。<br>这意味着，当前目录的node_modules/.bin子目录里面的所有脚本，都可以直接用脚本名调用，而不必加上路径。比如，当前项目的依赖里面有 Mocha，只要直接写mocha test就可以了。<br>在webpack进行打包时要注意修改为”build”: “webpack”</p>
 <p>2.index.js是整个页面的全局，包含了其中模块化</p>
 <p>3.运行“node_modules/.bin/webpack”出现：‘The ‘mode’ option has not been set. Set ‘mode’ option to ‘development’ or ‘production’ to enable defaults for this environment.’<br>检查：<br>设置src / index.js ，使其包含console.log(“Hello world”); 。<br>执行node_modules/.bin/webpack –mode development 。 Webpack将通过Node约定发现源文件。<br>检查dist / main.js。 您应该看到开始执行代码的webpack引导程序代码。 在bootstrap下面，你应该找到熟悉的东西。</p>
+<p>4.module.exports后要接函数或者对象，不能直接输出</p>
+<p>5.用了引用，在接入webpack入口时只需要加入引用后的模块，根模块不用引用。</p>
 <h4 id="为什么要模块化"><a href="#为什么要模块化" class="headerlink" title="为什么要模块化"></a>为什么要模块化</h4><p>最主要的作用就是产生独立的局部变量，减少全局变量：<br>1.减少“命名空间污染”，防止重复命名<br>2.便于维护<br>3.可用于其他文件</p>
 <p>####实现模块模式的方法<br>从1999到现在有<a href="http://www.cnblogs.com/rainman/archive/2009/05/04/1448899.html" target="_blank" rel="external">闭包模块化模式</a>、Umd、YModules等多种方法，但是现在较流行的就是CommonJS、Amd、ES6</p>
 
@@ -383,7 +385,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-02T14:25:40+08:00">
                 2018-02-02
@@ -428,7 +430,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/02/02/javascript/#more" rel="contents">
-              Weiterlesen &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -507,7 +509,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-14T13:35:46+08:00">
                 2017-12-14
@@ -552,7 +554,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/12/14/指针/#more" rel="contents">
-              Weiterlesen &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -631,7 +633,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-01T21:15:54+08:00">
                 2017-12-01
@@ -676,7 +678,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/12/01/阅读从输入url到显示网页后个人理解/#more" rel="contents">
-              Weiterlesen &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -755,7 +757,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-16T20:44:30+08:00">
                 2017-11-16
@@ -800,7 +802,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/11/16/学而/#more" rel="contents">
-              Weiterlesen &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -879,7 +881,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-12T07:59:23+08:00">
                 2017-10-12
@@ -924,7 +926,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/10/12/关于C/#more" rel="contents">
-              Weiterlesen &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1003,7 +1005,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-11T17:09:03+08:00">
                 2017-10-11
@@ -1048,7 +1050,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/10/11/hello-world/#more" rel="contents">
-              Weiterlesen &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1132,7 +1134,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">7</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -1145,7 +1147,7 @@
               <div class="site-state-item site-state-tags">
                 
                   <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">Tags</span>
+                  <span class="site-state-item-name">tags</span>
                 
               </div>
             
@@ -1193,7 +1195,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
