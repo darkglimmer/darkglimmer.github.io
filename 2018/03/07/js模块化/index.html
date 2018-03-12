@@ -85,7 +85,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/03/07/js模块化/index.html">
 <meta property="og:site_name" content="darkglimmer‘s blog">
 <meta property="og:description" content="webpack在学习webpack过程中有几个我忽略和弄错的： 1.package.json中的script定义脚本命令。每当执行npm run，就会自动新建一个 Shell，在这个 Shell 里面执行指定的脚本命令。因此，只要是 Shell（一般是 Bash）可以运行的命令，就可以写在 npm 脚本里面。比较特别的是，npm run新建的这个 Shell，会将当前目录的node_module">
-<meta property="og:updated_time" content="2018-03-10T12:45:45.569Z">
+<meta property="og:updated_time" content="2018-03-12T18:02:21.578Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js模块化">
 <meta name="twitter:description" content="webpack在学习webpack过程中有几个我忽略和弄错的： 1.package.json中的script定义脚本命令。每当执行npm run，就会自动新建一个 Shell，在这个 Shell 里面执行指定的脚本命令。因此，只要是 Shell（一般是 Bash）可以运行的命令，就可以写在 npm 脚本里面。比较特别的是，npm run新建的这个 Shell，会将当前目录的node_module">
@@ -184,7 +184,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -194,7 +194,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -258,7 +258,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-07T20:06:43+08:00">
                 2018-03-07
@@ -305,8 +305,29 @@
 <p>3.运行“node_modules/.bin/webpack”出现：‘The ‘mode’ option has not been set. Set ‘mode’ option to ‘development’ or ‘production’ to enable defaults for this environment.’<br>检查：<br>设置src / index.js ，使其包含console.log(“Hello world”); 。<br>执行node_modules/.bin/webpack –mode development 。 Webpack将通过Node约定发现源文件。<br>检查dist / main.js。 您应该看到开始执行代码的webpack引导程序代码。 在bootstrap下面，你应该找到熟悉的东西。</p>
 <p>4.module.exports后要接函数或者对象，不能直接输出</p>
 <p>5.用了引用，在接入webpack入口时只需要加入引用后的模块，根模块不用引用。</p>
-<h4 id="为什么要模块化"><a href="#为什么要模块化" class="headerlink" title="为什么要模块化"></a>为什么要模块化</h4><p>最主要的作用就是产生独立的局部变量，减少全局变量：<br>1.减少“命名空间污染”，防止重复命名<br>2.便于维护<br>3.可用于其他文件</p>
-<p>####实现模块模式的方法<br>从1999到现在有<a href="http://www.cnblogs.com/rainman/archive/2009/05/04/1448899.html" target="_blank" rel="external">闭包模块化模式</a>、Umd、YModules等多种方法，但是现在较流行的就是CommonJS、Amd、ES6</p>
+<h4 id="为什么要模块化"><a href="#为什么要模块化" class="headerlink" title="为什么要模块化"></a>为什么要模块化</h4><p>最主要的作用就是产生独立的局部变量，减少全局变量：<br>1.减少“命名空间污染”，防止重复命名<br>2.便于维护<br>3.可用于其他文件<br>4.明确代码之间的依赖关系</p>
+<h4 id="实现模块模式的方法"><a href="#实现模块模式的方法" class="headerlink" title="实现模块模式的方法"></a>实现模块模式的方法</h4><p>从1999到现在有<a href="http://www.cnblogs.com/rainman/archive/2009/05/04/1448899.html" target="_blank" rel="external">闭包模块化模式</a>、<a href="http://snandy.iteye.com/blog/1450665" target="_blank" rel="external">Umd</a>、YModules等<a href="http://www.oschina.net/translate/javascript-module-pattern-in-depth" target="_blank" rel="external">多种方法</a>，但是现在较流行的就是CommonJS、Amd、ES6</p>
+<p>在一些其他方式里，参考书籍来看主要是匿名闭包和引入全局比较多用：<br><strong>匿名闭包</strong>：我们将简单的创建匿名函数，并立即执行。所有函数内部代码都在闭包(closure)内。它提供了整个应用生命周期的私有和状态。这种方法的好处在于，你可以在函数内部使用局部变量，而不会意外覆盖同名全局变量，但仍然能够访问到全局变量<br>根据参数的不同格式，require命令去不同路径寻找模块文件。</p>
+<p>（1）如果参数字符串以“/”开头，则表示加载的是一个位于绝对路径的模块文件。比如，require(‘/home/marco/foo.js’)将加载/home/marco/foo.js。</p>
+<p>（2）如果参数字符串以“./”开头，则表示加载的是一个位于相对路径（跟当前执行脚本的位置相比）的模块文件。比如，require(‘./circle’)将加载当前脚本同一目录的circle.js。</p>
+<p>（3）如果参数字符串不以“./“或”/“开头，则表示加载的是一个默认提供的核心模块（位于Node的系统安装目录中），或者一个位于各级node_modules目录的已安装模块（全局安装或局部安装）。</p>
+<p>（4）如果参数字符串不以“./“或”/“开头，而且是一个路径，比如require(‘example-module/path/to/file’)，则将先找到example-module的位置，然后再以它为参数，找到后续路径。</p>
+<p>（5）如果指定的模块文件没有发现，Node会尝试为文件名添加.js、.json、.node后，再去搜索。.js件会以文本格式的JavaScript脚本文件解析，.json文件会以JSON格式的文本文件解析，.node文件会以编译后的二进制文件解析。</p>
+<p>（6）如果想得到require命令加载的确切文件名，使用require.resolve()方法。<br>删除模块的缓存:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 删除指定模块的缓存</div><div class="line">delete require.cache[moduleName];</div><div class="line"></div><div class="line">// 删除所有模块的缓存</div><div class="line">Object.keys(require.cache).forEach(function(key) &#123;</div><div class="line">delete require.cache[key];</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">var global = &apos;Hello, I am a global variable :)&apos;;</div><div class="line"></div><div class="line">(function () &#123;</div><div class="line">// 在函数的作用域中下面的变量是私有的</div><div class="line"></div><div class="line">var myGrades = [93, 95, 88, 0, 55, 91];</div><div class="line"></div><div class="line">var average = function() &#123;</div><div class="line">var total = myGrades.reduce(function(accumulator, item) &#123;</div><div class="line">return accumulator + item&#125;, 0);</div><div class="line"></div><div class="line">return &apos;Your average grade is &apos; + total / myGrades.length + &apos;.&apos;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var failing = function()&#123;</div><div class="line">var failingGrades = myGrades.filter(function(item) &#123;</div><div class="line">return item &lt; 70;&#125;);</div><div class="line"></div><div class="line">return &apos;You failed &apos; + failingGrades.length + &apos; times.&apos;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">console.log(failing());</div><div class="line">console.log(global);</div><div class="line">&#125;());</div><div class="line"></div><div class="line"></div><div class="line">// 控制台显示：&apos;You failed 2 times.&apos;</div><div class="line">// 控制台显示：&apos;Hello, I am a global variable :)&apos;</div></pre></td></tr></table></figure>
+<p><strong>引入全局</strong>：JavaScript有个特性，称为隐性全局。使用变量名称时，解释器会从作用域向后寻找变量声明。在函数的作用域中下面的变量是私有的，通过全局变量设置下列方法的外部访问接口，与此同时这些方法又都在函数内部。<br>比如存在一个唯一全局变量globalVariable ：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">globalVariable.map = function(collection, iterator) &#123;</div><div class="line">var mapped = [];</div><div class="line">globalUtils.each(collection, function(value, key, collection) &#123;</div><div class="line">mapped.push(iterator(value));</div><div class="line">&#125;);</div><div class="line">return mapped;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>在这个例子中，”.map“作为一个方式来传入 函数，实现模块化。</p>
+<p><a href="http://javascript.ruanyifeng.com/nodejs/module.html#toc4" target="_blank" rel="external"><strong>CommonJS</strong></a><br>通过CommonJS，每个JS文件独立地存储它模块的内容（就像一个被括起来的闭包一样）。在这种作用域中，我们通过 module.exports 语句来导出对象为模块，再通过 require 语句来引入。<br>通过指定导出的对象名称，CommonJS模块系统可以识别在其他文件引入这个模块时应该如何解释。<br>每个模块内部，module变量代表当前模块。这个变量是一个对象，它的exports属性（即module.exports）是对外的接口。加载某个模块，其实是加载该模块的module.exports属性。Node使用CommonJS模块规范，内置的require命令用于加载模块文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var x = 5;</div><div class="line">var addX = function (value) &#123;</div><div class="line">return value + x;</div><div class="line">&#125;;</div><div class="line">module.exports.x = x;</div><div class="line">module.exports.addX = addX;//输出函数或者对象</div><div class="line"></div><div class="line">var example = require(&apos;./example.js&apos;);//require方法用于加载模块</div></pre></td></tr></table></figure>
+<p>造成的结果是，在对外输出模块接口时，可以向exports对象添加方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">exports.area = function (r) &#123;</div><div class="line">return Math.PI * r * r;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">exports.circumference = function (r) &#123;</div><div class="line">return 2 * Math.PI * r;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>注意，不能直接将exports变量指向一个值，因为这样等于切断了exports与module.exports的联系。如果一个模块的对外接口，就是一个单一的值，不能使用exports输出，只能使用module.exports输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">exports = function(x) &#123;console.log(x)&#125;;//无效</div><div class="line"></div><div class="line">exports.hello = function() &#123;</div><div class="line">return &apos;hello&apos;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">module.exports = &apos;Hello world&apos;;//无效,hello函数是无法对外输出的，因为module.exports被重新赋值了。</div></pre></td></tr></table></figure></p>
+<p>module.id 模块的识别符，通常是带有绝对路径的模块文件名。<br>module.filename 模块的文件名，带有绝对路径。<br>module.loaded 返回一个布尔值，表示模块是否已经完成加载。<br>module.parent 返回一个对象，表示调用该模块的模块。<br>module.children 返回一个数组，表示该模块要用到的其他模块。<br>module.exports 表示模块对外输出的值。</p>
+<p><strong>AMD（异步模块定义规范）</strong><br>AMD规范使用define方法定义模块。define 方法：第一个参数是依赖的模块，这些模块都会在后台无阻塞地加载，第二个参数则作为加载完毕的回调函数。回调函数将会使用载入的模块作为参数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">define([&apos;package/lib&apos;], function(lib)&#123;</div><div class="line">function foo()&#123;</div><div class="line">lib.log(&apos;hello world!&apos;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">return &#123;</div><div class="line">foo: foo</div><div class="line">&#125;;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>AMD规范允许输出的模块兼容CommonJS规范，这时define方法需要写成下面这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">define(function (require, exports, module)&#123;</div><div class="line">var someModule = require(&quot;someModule&quot;);</div><div class="line">var anotherModule = require(&quot;anotherModule&quot;);</div><div class="line"></div><div class="line">someModule.doTehAwesome();</div><div class="line">anotherModule.doMoarAwesome();</div><div class="line"></div><div class="line">exports.asplode = function ()&#123;</div><div class="line">someModule.doTehAwesome();</div><div class="line">anotherModule.doMoarAwesome();</div><div class="line">&#125;;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p><strong>ES6</strong><br>导入是实时只读的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var counter = 1;</div><div class="line"></div><div class="line">function increment() &#123;</div><div class="line">counter++;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function decrement() &#123;</div><div class="line">counter--;</div><div class="line">&#125;</div><div class="line"></div><div class="line">module.exports = &#123;</div><div class="line">counter: counter,</div><div class="line">increment: increment,</div><div class="line">decrement: decrement</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p> counter.increment() 方法只会改变模块中的 counter .想要修改引入的 counter 只有手动<code>counter.counter++;</code><br> 而通过 import 语句，可以引入实时只读的模块：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">export let counter = 1;</div><div class="line"></div><div class="line">export function increment() &#123;</div><div class="line">counter++;</div><div class="line">&#125;</div><div class="line"></div><div class="line">export function decrement() &#123;</div><div class="line">counter--;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">// src/main.js</div><div class="line">import * as counter from &apos;../../counter&apos;;</div><div class="line"></div><div class="line">console.log(counter.counter); // 1</div><div class="line">counter.increment();</div><div class="line">console.log(counter.counter); // 2</div></pre></td></tr></table></figure></p>
+<p> conger实现了我们把模块分隔在不同的文件里，需要的时候又可以合并在一起而且不影响它的功能。</p>
 
       
     </div>
@@ -393,10 +414,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -417,7 +438,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">7</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
             
@@ -430,7 +451,7 @@
               <div class="site-state-item site-state-tags">
                 
                   <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">Tags</span>
                 
               </div>
             
@@ -464,7 +485,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#webpack"><span class="nav-number">1.</span> <span class="nav-text">webpack</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么要模块化"><span class="nav-number">2.</span> <span class="nav-text">为什么要模块化</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#webpack"><span class="nav-number">1.</span> <span class="nav-text">webpack</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么要模块化"><span class="nav-number">2.</span> <span class="nav-text">为什么要模块化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现模块模式的方法"><span class="nav-number">3.</span> <span class="nav-text">实现模块模式的方法</span></a></li></ol></div>
             
 
           </div>
@@ -494,7 +515,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
