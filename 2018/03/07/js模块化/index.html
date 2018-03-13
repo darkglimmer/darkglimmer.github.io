@@ -85,7 +85,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/03/07/js模块化/index.html">
 <meta property="og:site_name" content="darkglimmer‘s blog">
 <meta property="og:description" content="关于js模块化和webpack">
-<meta property="og:updated_time" content="2018-03-13T07:23:40.810Z">
+<meta property="og:updated_time" content="2018-03-13T07:25:14.751Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js模块化">
 <meta name="twitter:description" content="关于js模块化和webpack">
@@ -307,7 +307,7 @@
 <p>5.用了引用，在接入webpack入口时只需要加入引用后的模块，根模块不用引用。</p>
 <h4 id="为什么要模块化"><a href="#为什么要模块化" class="headerlink" title="为什么要模块化"></a>为什么要模块化</h4><p>最主要的作用就是产生独立的局部变量，减少全局变量：<br>1.减少“命名空间污染”，防止重复命名<br>2.便于维护<br>3.可用于其他文件<br>4.明确代码之间的依赖关系</p>
 <h4 id="实现模块模式的方法"><a href="#实现模块模式的方法" class="headerlink" title="实现模块模式的方法"></a>实现模块模式的方法</h4><p>从1999到现在有<a href="http://www.cnblogs.com/rainman/archive/2009/05/04/1448899.html" target="_blank" rel="external">闭包模块化模式</a>、<a href="http://snandy.iteye.com/blog/1450665" target="_blank" rel="external">Umd</a>、YModules等<a href="http://www.oschina.net/translate/javascript-module-pattern-in-depth" target="_blank" rel="external">多种方法</a>，但是现在较流行的就是CommonJS、Amd、ES6</p>
-<p>在一些其他方式里，参考书籍来看主要是匿名闭包和引入全局比较多用：<br><strong>匿名闭包</strong>：我们将简单的创建匿名函数，并立即执行。所有函数内部代码都在闭包(closure)内。它提供了整个应用生命周期的私有和状态。这种方法的好处在于，你可以在函数内部使用局部变量，而不会意外覆盖同名全局变量，但仍然能够访问到全局变量<br>根据参数的不同格式，require命令去不同路径寻找模块文件。</p>
+<p>在一些其他方式里，参考书籍来看主要是匿名闭包和引入全局比较多用：<br><a href="http://www.cnblogs.com/rainman/archive/2009/05/04/1448899.html" target="_blank" rel="external"><strong>匿名闭包</strong></a>：我们将简单的创建匿名函数，并立即执行。所有函数内部代码都在闭包(closure)内。它提供了整个应用生命周期的私有和状态。这种方法的好处在于，你可以在函数内部使用局部变量，而不会意外覆盖同名全局变量，但仍然能够访问到全局变量<br>根据参数的不同格式，require命令去不同路径寻找模块文件。</p>
 <p>（1）如果参数字符串以“/”开头，则表示加载的是一个位于绝对路径的模块文件。比如，require(‘/home/marco/foo.js’)将加载/home/marco/foo.js。</p>
 <p>（2）如果参数字符串以“./”开头，则表示加载的是一个位于相对路径（跟当前执行脚本的位置相比）的模块文件。比如，require(‘./circle’)将加载当前脚本同一目录的circle.js。</p>
 <p>（3）如果参数字符串不以“./“或”/“开头，则表示加载的是一个默认提供的核心模块（位于Node的系统安装目录中），或者一个位于各级node_modules目录的已安装模块（全局安装或局部安装）。</p>
