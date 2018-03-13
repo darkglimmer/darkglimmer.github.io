@@ -85,7 +85,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/03/07/js模块化/index.html">
 <meta property="og:site_name" content="darkglimmer‘s blog">
 <meta property="og:description" content="关于js模块化和webpack">
-<meta property="og:updated_time" content="2018-03-12T18:06:17.705Z">
+<meta property="og:updated_time" content="2018-03-13T07:23:40.810Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js模块化">
 <meta name="twitter:description" content="关于js模块化和webpack">
@@ -184,7 +184,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -194,7 +194,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -258,7 +258,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-07T20:06:43+08:00">
                 2018-03-07
@@ -315,6 +315,8 @@
 <p>（5）如果指定的模块文件没有发现，Node会尝试为文件名添加.js、.json、.node后，再去搜索。.js件会以文本格式的JavaScript脚本文件解析，.json文件会以JSON格式的文本文件解析，.node文件会以编译后的二进制文件解析。</p>
 <p>（6）如果想得到require命令加载的确切文件名，使用require.resolve()方法。<br>删除模块的缓存:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 删除指定模块的缓存</div><div class="line">delete require.cache[moduleName];</div><div class="line"></div><div class="line">// 删除所有模块的缓存</div><div class="line">Object.keys(require.cache).forEach(function(key) &#123;</div><div class="line">delete require.cache[key];</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">var global = &apos;Hello, I am a global variable :)&apos;;</div><div class="line"></div><div class="line">(function () &#123;</div><div class="line">// 在函数的作用域中下面的变量是私有的</div><div class="line"></div><div class="line">var myGrades = [93, 95, 88, 0, 55, 91];</div><div class="line"></div><div class="line">var average = function() &#123;</div><div class="line">var total = myGrades.reduce(function(accumulator, item) &#123;</div><div class="line">return accumulator + item&#125;, 0);</div><div class="line"></div><div class="line">return &apos;Your average grade is &apos; + total / myGrades.length + &apos;.&apos;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var failing = function()&#123;</div><div class="line">var failingGrades = myGrades.filter(function(item) &#123;</div><div class="line">return item &lt; 70;&#125;);</div><div class="line"></div><div class="line">return &apos;You failed &apos; + failingGrades.length + &apos; times.&apos;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">console.log(failing());</div><div class="line">console.log(global);</div><div class="line">&#125;());</div><div class="line"></div><div class="line"></div><div class="line">// 控制台显示：&apos;You failed 2 times.&apos;</div><div class="line">// 控制台显示：&apos;Hello, I am a global variable :)&apos;</div></pre></td></tr></table></figure>
+<p>注意：<br> 闭包允许内层函数引用父函数中的变量，但是该变量是最终值<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">* &lt;body&gt;</div><div class="line">* &lt;ul&gt;</div><div class="line">*     &lt;li&gt;one&lt;/li&gt;</div><div class="line">*     &lt;li&gt;two&lt;/li&gt;</div><div class="line">*     &lt;li&gt;three&lt;/li&gt;</div><div class="line">*     &lt;li&gt;one&lt;/li&gt;</div><div class="line">* &lt;/ul&gt;</div><div class="line">*/</div><div class="line"></div><div class="line">var lists = document.getElementsByTagName(&apos;li&apos;);</div><div class="line">for(var i = 0 , len = lists.length ; i &lt; len ; i++)&#123;</div><div class="line">lists[ i ].onmouseover = function()&#123;</div><div class="line">alert(i);</div><div class="line">&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p> 事实上你会发现当鼠标移过每一个<li&rt;元素时，总是弹出4，而不是我们期待的元素下标。当mouseover事件调用监听函数时，首先在匿名函数（ function(){="" alert(i);="" }）内部查找是否定义了="" i，结果是没有定义；因此它会向上查找，查找结果是已经定义了，并且i的值是4（循环后的i值）；所以，最终每次弹出的都是4。="" 解决方法：="" <figure="" class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">var lists = document.getElementsByTagName(&apos;li&apos;);</div><div class="line">for(var i = 0 , len = lists.length ; i &lt; len ; i++)&#123;</div><div class="line">(function(index)&#123;</div><div class="line">lists[ index ].onmouseover = function()&#123;</div><div class="line">alert(index);</div><div class="line">&#125;;</div><div class="line">&#125;)(i);//使用闭包函数</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">var lists = document.getElementsByTagName(&apos;li&apos;);</div><div class="line">for(var i = 0, len = lists.length; i &lt; len; i++)&#123;</div><div class="line">lists[ i ].$$index = i;    //通过在Dom元素上绑定$$index属性记录下标</div><div class="line">lists[ i ].onmouseover = function()&#123;</div><div class="line">alert(this.$$index);</div><div class="line">&#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function eventListener(list, index)&#123;</div><div class="line">list.onmouseover = function()&#123;</div><div class="line">alert(index);</div><div class="line">&#125;;</div><div class="line">&#125;//创建新函数</div><div class="line">var lists = document.getElementsByTagName(&apos;li&apos;);</div><div class="line">for(var i = 0 , len = lists.length ; i &lt; len ; i++)&#123;</div><div class="line">eventListener(lists[ i ] , i);</div><div class="line">&#125;</div></pre></td></tr></table></li&rt;元素时，总是弹出4，而不是我们期待的元素下标。当mouseover事件调用监听函数时，首先在匿名函数（></p>
 <p><strong>引入全局</strong>：JavaScript有个特性，称为隐性全局。使用变量名称时，解释器会从作用域向后寻找变量声明。在函数的作用域中下面的变量是私有的，通过全局变量设置下列方法的外部访问接口，与此同时这些方法又都在函数内部。<br>比如存在一个唯一全局变量globalVariable ：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">globalVariable.map = function(collection, iterator) &#123;</div><div class="line">var mapped = [];</div><div class="line">globalUtils.each(collection, function(value, key, collection) &#123;</div><div class="line">mapped.push(iterator(value));</div><div class="line">&#125;);</div><div class="line">return mapped;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <p>在这个例子中，”.map“作为一个方式来传入 函数，实现模块化。</p>
 <p><a href="http://javascript.ruanyifeng.com/nodejs/module.html#toc4" target="_blank" rel="external"><strong>CommonJS</strong></a><br>通过CommonJS，每个JS文件独立地存储它模块的内容（就像一个被括起来的闭包一样）。在这种作用域中，我们通过 module.exports 语句来导出对象为模块，再通过 require 语句来引入。<br>通过指定导出的对象名称，CommonJS模块系统可以识别在其他文件引入这个模块时应该如何解释。<br>每个模块内部，module变量代表当前模块。这个变量是一个对象，它的exports属性（即module.exports）是对外的接口。加载某个模块，其实是加载该模块的module.exports属性。Node使用CommonJS模块规范，内置的require命令用于加载模块文件。</p>
@@ -414,10 +416,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -438,7 +440,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">7</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
             
@@ -451,7 +453,7 @@
               <div class="site-state-item site-state-tags">
                 
                   <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">Tags</span>
                 
               </div>
             
@@ -515,7 +517,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
