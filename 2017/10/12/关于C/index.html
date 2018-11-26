@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="darkglimmer‘s blog">
 <meta property="og:description" content="关于c的一些知识点">
 <meta property="og:image" content="https://cdn.glitch.com/6fab60b1-32c5-42ee-b5f3-40edd35dc042%2Fc.png?1510035313302">
-<meta property="og:updated_time" content="2018-06-02T14:20:19.525Z">
+<meta property="og:updated_time" content="2018-10-08T13:29:54.996Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于C">
 <meta name="twitter:description" content="关于c的一些知识点">
@@ -187,7 +187,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -197,7 +197,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -261,7 +261,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-12T07:59:23+08:00">
                 2017-10-12
@@ -330,10 +330,11 @@ if(a==j) {
 else {
     printf(&quot;no\n&quot;);
 }
-</code></pre>  }<br>  return 0;<br>}<h3 id="求公因子"><a href="#求公因子" class="headerlink" title="求公因子"></a>求公因子</h3>int gcd(int m,int n)<br>{<br>  int r,tmp1,tmp2;<br>  r=m%n;<br>  while(r&gt;0)<br>  {<pre><code>r=m%n;
-tmp1=n;m=tmp1;
-tmp2=r;n=tmp2;
-</code></pre>  }<br>  return m;<h3 id="memest"><a href="#memest" class="headerlink" title="memest:"></a><a href="http://www.cppblog.com/luxuejuncarl/archive/2007/03/02/19137.html" target="_blank" rel="external">memest</a>:</h3>作用是在一段内存块中填充某个给定的值<h3 id="给char类型赋值"><a href="#给char类型赋值" class="headerlink" title="给char类型赋值"></a>给char类型赋值</h3>strcpy(a/<em>要赋的字母，b/</em>要赋的值);<h3 id="gets-1"><a href="#gets-1" class="headerlink" title="gets:"></a><a href="http://blog.csdn.net/libing403/article/details/73010866" target="_blank" rel="external">gets</a>:</h3>gets函数读取了换行符，并以换行符为结束标记（不存入s中）。<br>gets,scanf都会在末尾加上’\0’的，要不然字符串就没法结束了；<br>他们的不同在于，scanf碰到缓冲区里面的空字符(空格，tab，回车，换行就会截断并添加’\0’)，而gets是要等回车才截断字符串并添加’\0’的<br>用strlen计算字符串数组长度时，用fgets 时长度比输入的字符串要多1 因为算进了’\0’  用scanf函数输入字符串时len是正常的.<h3 id="连续输入字符串"><a href="#连续输入字符串" class="headerlink" title="连续输入字符串"></a>连续输入字符串</h3>1.读取字符可能会把空格读取进去 用scanf(“%d%<em>c”,&amp;n); 可以避免把空格赋值给变量 “</em>“符:用以表示该输入项,读入后不赋予相应的变量，即跳过该输入值。<br>2.在输入前加getchar();以保证在输入回车键后再进行下一行命令，但是这是相邻两个%c之间要加上” “;<h3 id="sizeof-int"><a href="#sizeof-int" class="headerlink" title="sizeof(int)"></a>sizeof(int)</h3>意味着一个int型的长度。8位代表一个字节长度，所以如果是一般使用的tc编译器(16位的)那么sizeof(int)就等于2，在32系统上等于4.<br>在数据处加入它，是为了保持数据的完整性和兼容型<br>例如：fwrtie（）中的len就需要sizeof，以保证在不同的系统中保持数据的一致性。</string.h></stdio.h></li>
+</code></pre>  }<br>  return 0;<br>}<h3 id="求公因子"><a href="#求公因子" class="headerlink" title="求公因子"></a>求公因子</h3>int gcd(int m,int n)<br>{<br>  int r,tmp1,tmp2;<br>  r=m%n;<br>  while(r&gt;0)<pre><code>{
+ r=m%n;
+ tmp1=n;m=tmp1;
+ tmp2=r;n=tmp2;
+</code></pre>  }<br>  return m;<br>}<h3 id="memest"><a href="#memest" class="headerlink" title="memest:"></a><a href="http://www.cppblog.com/luxuejuncarl/archive/2007/03/02/19137.html" target="_blank" rel="external">memest</a>:</h3>作用是在一段内存块中填充某个给定的值<h3 id="给char类型赋值"><a href="#给char类型赋值" class="headerlink" title="给char类型赋值"></a>给char类型赋值</h3>strcpy(a/<em>要赋的字母，b/</em>要赋的值);<h3 id="gets-1"><a href="#gets-1" class="headerlink" title="gets:"></a><a href="http://blog.csdn.net/libing403/article/details/73010866" target="_blank" rel="external">gets</a>:</h3>gets函数读取了换行符，并以换行符为结束标记（不存入s中）。<br>gets,scanf都会在末尾加上’\0’的，要不然字符串就没法结束了；<br>他们的不同在于，scanf碰到缓冲区里面的空字符(空格，tab，回车，换行就会截断并添加’\0’)，而gets是要等回车才截断字符串并添加’\0’的<br>用strlen计算字符串数组长度时，用fgets 时长度比输入的字符串要多1 因为算进了’\0’  用scanf函数输入字符串时len是正常的.<h3 id="连续输入字符串"><a href="#连续输入字符串" class="headerlink" title="连续输入字符串"></a>连续输入字符串</h3>1.读取字符可能会把空格读取进去 用scanf(“%d%<em>c”,&amp;n); 可以避免把空格赋值给变量 “</em>“符:用以表示该输入项,读入后不赋予相应的变量，即跳过该输入值。<br>2.在输入前加getchar();以保证在输入回车键后再进行下一行命令，但是这是相邻两个%c之间要加上” “;<h3 id="sizeof-int"><a href="#sizeof-int" class="headerlink" title="sizeof(int)"></a>sizeof(int)</h3>意味着一个int型的长度。8位代表一个字节长度，所以如果是一般使用的tc编译器(16位的)那么sizeof(int)就等于2，在32系统上等于4.<br>在数据处加入它，是为了保持数据的完整性和兼容型<br>例如：fwrtie（）中的len就需要sizeof，以保证在不同的系统中保持数据的一致性。</string.h></stdio.h></li>
 </ul>
 
       
@@ -431,10 +432,10 @@ tmp2=r;n=tmp2;
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -454,8 +455,8 @@ tmp2=r;n=tmp2;
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
             
@@ -467,8 +468,8 @@ tmp2=r;n=tmp2;
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">Tags</span>
                 
               </div>
             
@@ -532,7 +533,7 @@ tmp2=r;n=tmp2;
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
