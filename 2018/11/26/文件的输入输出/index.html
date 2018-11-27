@@ -86,7 +86,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/11/26/文件的输入输出/index.html">
 <meta property="og:site_name" content="darkglimmer‘s blog">
 <meta property="og:description" content="文本文件的输入课本例题1234567891011121314151617181920#include &amp;lt;fstream.h&amp;gt;//你需要包含此文件以使用C++的文件输入/输出函数。注意：一旦包含了这个文件，你不再需要（为了使用cout/cin）包含iostream.h，因为fstream.h已经自动包含了它。在这个头文件中声明了若干个类，包括ifstream，ofstream及fstre">
-<meta property="og:updated_time" content="2018-11-26T15:56:44.485Z">
+<meta property="og:updated_time" content="2018-11-27T14:33:28.925Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="文件的输入输出">
 <meta name="twitter:description" content="文本文件的输入课本例题1234567891011121314151617181920#include &amp;lt;fstream.h&amp;gt;//你需要包含此文件以使用C++的文件输入/输出函数。注意：一旦包含了这个文件，你不再需要（为了使用cout/cin）包含iostream.h，因为fstream.h已经自动包含了它。在这个头文件中声明了若干个类，包括ifstream，ofstream及fstre">
@@ -185,7 +185,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Accueil
           </a>
         </li>
       
@@ -195,7 +195,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -259,7 +259,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-26T23:54:54+08:00">
                 2018-11-26
@@ -299,9 +299,8 @@
       
 
       
-        <h2 id="文本文件的输入"><a href="#文本文件的输入" class="headerlink" title="文本文件的输入"></a>文本文件的输入</h2><h3 id="课本例题"><a href="#课本例题" class="headerlink" title="课本例题"></a>课本例题</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream.h&gt;//你需要包含此文件以使用C++的文件输入/输出函数。注意：一旦包含了这个文件，你不再需要（为了使用cout/cin）包含iostream.h，因为fstream.h已经自动包含了它。在这个头文件中声明了若干个类，包括ifstream，ofstream及fstream，它们都继承自istream和ostream类。</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">char</span> name[<span class="number">8</span>],score[<span class="number">6</span>];</div><div class="line">	ifstream txtfile;</div><div class="line">	txtfile.open(<span class="string">"d:\\c++book\\record.txt"</span>);<span class="comment">//如果程序运行的当前目录已经存在这样一个文件，则它将被替换掉；万一不存在，程序也会为你创建一个为文件。</span></div><div class="line">	<span class="keyword">if</span>(!txtfile)&#123;</div><div class="line">		<span class="built_in">cerr</span> &lt;&lt; <span class="string">"record.txt open error!"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">		<span class="built_in">exit</span>(<span class="number">1</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">while</span>(!txtfile.eof())&#123;</div><div class="line">		<span class="comment">//eof()如果读文件到达文件末尾，返回true。</span></div><div class="line">		txtfile &gt;&gt; name &gt;&gt; score;</div><div class="line">		<span class="built_in">cout</span> &lt;&lt; name &lt;&lt; <span class="string">'\t'</span> &lt;&lt; score &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	&#125;</div><div class="line">	txtfile.close();<span class="comment">//一旦你关闭文件，在你重新打开它以前，就再不能对它进行访问。</span></div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>几个要注意的点：</strong></p>
-<ul>
+        <h2 id="文本文件的输入"><a href="#文本文件的输入" class="headerlink" title="文本文件的输入"></a>文本文件的输入</h2><h3 id="课本例题"><a href="#课本例题" class="headerlink" title="课本例题"></a>课本例题</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream.h&gt;//你需要包含此文件以使用C++的文件输入/输出函数。注意：一旦包含了这个文件，你不再需要（为了使用cout/cin）包含iostream.h，因为fstream.h已经自动包含了它。在这个头文件中声明了若干个类，包括ifstream，ofstream及fstream，它们都继承自istream和ostream类。</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">char</span> name[<span class="number">8</span>],score[<span class="number">6</span>];</div><div class="line">	ifstream txtfile;</div><div class="line">	txtfile.open(<span class="string">"d:\\c++book\\record.txt"</span>);<span class="comment">//如果程序运行的当前目录已经存在这样一个文件，则它将被替换掉；万一不存在，程序也会为你创建一个为文件。</span></div><div class="line">	<span class="keyword">if</span>(!txtfile)&#123;</div><div class="line">		<span class="built_in">cerr</span> &lt;&lt; <span class="string">"record.txt open error!"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">		<span class="built_in">exit</span>(<span class="number">1</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">while</span>(!txtfile.eof())&#123;</div><div class="line">		<span class="comment">//eof()如果读文件到达文件末尾，返回true。</span></div><div class="line">		txtfile &gt;&gt; name &gt;&gt; score;<span class="comment">//从文件中读取一个单词，即将空格作为单词的分隔符，然后将它存入指定的数组变量中。</span></div><div class="line">		<span class="built_in">cout</span> &lt;&lt; name &lt;&lt; <span class="string">'\t'</span> &lt;&lt; score &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	&#125;</div><div class="line">	txtfile.close();<span class="comment">//一旦你关闭文件，在你重新打开它以前，就再不能对它进行访问。</span></div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><ul>
 <li><p>在 <code>fstream</code> 类中，成员函数 <code>open（）</code>实现打开文件的操作，从而将数据流和文件进行关联，通过 <code>ofstream</code> , <code>ifstream</code> , <code>fstream</code> 对象进行对文件的读写操作。其中不难发现 <code>ofstream</code>, <code>ifstream</code> 都能实现向文件中输入输出，那么它们之间的区别是什么？</p>
 <p>  例子：</p>
 </li>
@@ -365,6 +364,12 @@
 </tr>
 </tbody>
 </table>
+<p>比如：<code>fstream File(“test.txt”, ios::in | ios::out);</code> —— 此行创建一个<code>fstream</code>对象，执行时将会以读/写方式打开<code>test.txt</code>文件。这意味着你可以同时读取文件并写入数据。</p>
+<ul>
+<li>在课本例题中是以空格为单位分隔符，但是也可以通过</li>
+</ul>
+<p><code>OpenFile.getline(line,100); // 100是数组的大小</code></p>
+<p><code>cout &lt;&lt; line &lt;&lt; endl;</code><br>来实现整行读取。</p>
 
       
     </div>
@@ -457,10 +462,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
+            Table Des Matières
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
+            Ensemble
           </li>
         </ul>
       
@@ -481,7 +486,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">11</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">articles</span>
                 </a>
               </div>
             
@@ -494,7 +499,7 @@
               <div class="site-state-item site-state-tags">
                 
                   <span class="site-state-item-count">3</span>
-                  <span class="site-state-item-name">Tags</span>
+                  <span class="site-state-item-name">tags</span>
                 
               </div>
             
@@ -528,7 +533,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#文本文件的输入"><span class="nav-number">1.</span> <span class="nav-text">文本文件的输入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#课本例题"><span class="nav-number">1.1.</span> <span class="nav-text">课本例题</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#文本文件的输入"><span class="nav-number">1.</span> <span class="nav-text">文本文件的输入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#课本例题"><span class="nav-number">1.1.</span> <span class="nav-text">课本例题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#补充"><span class="nav-number">1.2.</span> <span class="nav-text">补充</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -558,7 +563,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
@@ -566,7 +571,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+  <div class="theme-info">Thème &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
 
 
 
